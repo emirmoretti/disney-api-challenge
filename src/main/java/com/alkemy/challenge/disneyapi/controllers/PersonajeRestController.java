@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
@@ -19,10 +20,16 @@ public class PersonajeRestController {
     private PersonajeServiceImpl personajeService;
 
     @GetMapping("/personajes")
-    public List<Personaje> findAll(){
-        List<Personaje> personajes = personajeService.findAll();
-        PersonajeDTO personajedto = null;
-        return personajeService.findAll();
+    public List<PersonajeDTO> findAll(){
+        List<PersonajeDTO> personajes = personajeService.findAll()
+                .stream()
+                .map(personaje -> {
+                    PersonajeDTO personajedto = new PersonajeDTO();
+                    personajedto.setNombre(personaje.getNombre());
+                    personajedto.setImagen(personaje.getImagen());
+                    return personajedto;
+                }).collect(Collectors.toList());
+        return personajes;
     }
 
     @GetMapping("/personajes/{id}")
