@@ -15,6 +15,19 @@ public class PersonajeServiceImpl implements IPersonajeService {
     @Autowired
     PersonajeRepo personajeRepo;
 
+    @Transactional(readOnly = true)
+    public  List<Personaje> findByName(String nombre){
+        return personajeRepo.findByNombre(nombre);
+    }
+    @Transactional(readOnly = true)
+    public List<Personaje> findAllByAge(Integer edad){
+        return personajeRepo.findAllByEdad(edad);
+    }
+    @Transactional(readOnly = true)
+    public List<Personaje> findAllByPelicula(Long id){
+        return personajeRepo.findAllByPeliculaId(id);
+    }
+
     @Override
     @Transactional(readOnly = true)
     public Personaje findById(Long id) {

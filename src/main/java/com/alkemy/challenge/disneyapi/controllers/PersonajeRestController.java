@@ -44,6 +44,21 @@ public class PersonajeRestController {
         Personaje personaje = personajeService.findById(id);
         return new ResponseEntity<>(personaje, HttpStatus.OK);
     }
+
+    /*Request mapping*/
+    @RequestMapping(value = "/characters", params = "nombre")
+    public  List<Personaje> findByName(@RequestParam String nombre){
+        return personajeService.findByName(nombre);
+    }
+    @RequestMapping(value = "/characters", params = "edad")
+    public List<Personaje> findByAge(@RequestParam Integer edad){
+        return personajeService.findAllByAge(edad);
+    }
+    @RequestMapping(value = "/characters", params = "peliculaId")
+    public List<Personaje> findByPelicula(@RequestParam Long peliculaId){
+        return personajeService.findAllByPelicula(peliculaId);
+    }
+
     @PostMapping("/characters")
     public ResponseEntity<?> create(@RequestBody Personaje personaje){
         Personaje personajeNuevo = personajeService.save(personaje);
