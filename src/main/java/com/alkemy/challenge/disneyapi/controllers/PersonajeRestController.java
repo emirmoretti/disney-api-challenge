@@ -19,7 +19,7 @@ public class PersonajeRestController {
     @Autowired
     private PersonajeServiceImpl personajeService;
 
-    @GetMapping("/personajes")
+    @GetMapping("/characters")
     public List<PersonajeDTO> findAll(){
         List<PersonajeDTO> personajes = personajeService.findAll()
                 .stream()
@@ -32,9 +32,10 @@ public class PersonajeRestController {
         return personajes;
     }
 
-    @GetMapping("/personajes/{id}")
+    @GetMapping("/characters/{id}")
     public ResponseEntity<?> findById(@PathVariable Long id){
         Personaje personaje = personajeService.findById(id);
         return new ResponseEntity<>(personaje, HttpStatus.OK);
     }
+
 }
