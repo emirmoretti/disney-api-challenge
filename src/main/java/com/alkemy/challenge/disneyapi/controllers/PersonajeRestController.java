@@ -38,4 +38,10 @@ public class PersonajeRestController {
         return new ResponseEntity<>(personaje, HttpStatus.OK);
     }
 
+    @DeleteMapping("/characters/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id){
+        personajeService.delete(id);
+        return new ResponseEntity<>("cliente eliminado", HttpStatus.OK);
+    }
+
 }
