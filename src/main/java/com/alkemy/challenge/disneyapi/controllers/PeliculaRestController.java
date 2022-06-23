@@ -36,6 +36,12 @@ public class PeliculaRestController {
         return peliculaService.findById(id);
     }
 
+    @PostMapping("/movies")
+    public ResponseEntity<?> createMovie(@RequestBody Pelicula pelicula){
+        peliculaService.save(pelicula);
+        return new ResponseEntity<>("movie created", HttpStatus.CREATED);
+    }
+
     @DeleteMapping("/movies/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         peliculaService.delete(id);
