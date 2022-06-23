@@ -42,6 +42,17 @@ public class PeliculaRestController {
         return new ResponseEntity<>("movie created", HttpStatus.CREATED);
     }
 
+    @PutMapping("/movies/{id}")
+    public ResponseEntity<?> editMovie(@PathVariable Long id, @RequestBody Pelicula pelicula){
+        Pelicula peliculaDb = peliculaService.findById(id);
+        peliculaDb.setTitulo(pelicula.getTitulo());
+        peliculaDb.setImage(pelicula.getImage());
+        peliculaDb.setCalificacion(pelicula.getCalificacion());
+        peliculaDb.setCreateAt(pelicula.getCreateAt());
+        peliculaService.save(peliculaDb);
+        return new ResponseEntity<>("pelicula editada", HttpStatus.OK);
+    }
+
     @DeleteMapping("/movies/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         peliculaService.delete(id);
