@@ -1,6 +1,7 @@
 package com.alkemy.challenge.disneyapi.services.impl;
 
 import com.alkemy.challenge.disneyapi.entity.Pelicula;
+import com.alkemy.challenge.disneyapi.entity.Personaje;
 import com.alkemy.challenge.disneyapi.repo.PeliculaRepo;
 import com.alkemy.challenge.disneyapi.services.IPeliculaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ public class PeliculaServiceImpl implements IPeliculaService {
 
     @Autowired
     private PeliculaRepo peliculaRepo;
+
 
     @Override
     @Transactional(readOnly = true)

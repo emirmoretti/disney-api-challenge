@@ -4,10 +4,7 @@ import com.alkemy.challenge.disneyapi.dto.PeliculaDTO;
 import com.alkemy.challenge.disneyapi.entity.Pelicula;
 import com.alkemy.challenge.disneyapi.services.impl.PeliculaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,6 +32,11 @@ public class PeliculaRestController {
     @GetMapping("/movies/{id}") /*Detalle de la pelicula con todos sus campos*/
     public Pelicula findById(@PathVariable Long id){
         return peliculaService.findById(id);
+    }
+
+    @DeleteMapping("/movies/{id}")
+    public void delete(@PathVariable Long id) {
+        peliculaService.delete(id);
     }
 
 }

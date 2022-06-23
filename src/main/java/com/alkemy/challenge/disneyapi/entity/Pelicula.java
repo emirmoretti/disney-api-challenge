@@ -25,17 +25,13 @@ public class Pelicula implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date createAt;
     private Double calificacion;
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            })
+    @ManyToMany(cascade =
+            {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "peliculas_personajes", joinColumns = @JoinColumn(name="pelicula_id")
             , inverseJoinColumns = @JoinColumn(name = "personaje_id"))
     private Set<Personaje> personajes = new HashSet<>();
 
     private static final long serialVersionUID = 1L;
-
 
 
 }

@@ -1,6 +1,7 @@
 package com.alkemy.challenge.disneyapi.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,12 +26,9 @@ public class Personaje implements Serializable {
     private Double peso;
     private String historia;
     private String imagen;
-    @ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            }, mappedBy = "personajes")
-    @JsonIgnoreProperties("personajes")
+    @ManyToMany(mappedBy = "personajes")
+    //JsonIgnoreProperties("personajes")
+    @JsonIgnore
     private Set<Pelicula> peliculas = new HashSet<>();
 
     private static final long serialVersionUID = 1L;
