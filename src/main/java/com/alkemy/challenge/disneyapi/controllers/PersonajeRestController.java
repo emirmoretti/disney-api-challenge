@@ -44,12 +44,16 @@ public class PersonajeRestController {
         Personaje personaje = personajeService.findById(id);
         return new ResponseEntity<>(personaje, HttpStatus.OK);
     }
+    @PostMapping("/characters")
+    public ResponseEntity<?> create(@RequestBody Personaje personaje){
+        Personaje personajeNuevo = personajeService.save(personaje);
+        return new ResponseEntity<>(personajeNuevo, HttpStatus.CREATED);
+    }
 
     @DeleteMapping("/characters/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id){
         Personaje personaje = personajeService.findById(id);
         for (Pelicula pelicula : personaje.getPeliculas()){
-            System.out.println(pelicula.getId());
             pelicula.getPersonajes().remove(personaje);
             peliculaService.save(pelicula);
         }

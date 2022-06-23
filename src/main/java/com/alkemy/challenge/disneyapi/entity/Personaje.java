@@ -27,8 +27,8 @@ public class Personaje implements Serializable {
     private String historia;
     private String imagen;
     @ManyToMany(mappedBy = "personajes")
-    //JsonIgnoreProperties("personajes")
-    @JsonIgnore
+    @JsonIgnoreProperties("personajes")
+    //@JsonIgnore
     private Set<Pelicula> peliculas = new HashSet<>();
 
     private static final long serialVersionUID = 1L;

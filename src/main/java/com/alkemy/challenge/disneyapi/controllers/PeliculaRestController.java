@@ -4,6 +4,8 @@ import com.alkemy.challenge.disneyapi.dto.PeliculaDTO;
 import com.alkemy.challenge.disneyapi.entity.Pelicula;
 import com.alkemy.challenge.disneyapi.services.impl.PeliculaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,8 +37,9 @@ public class PeliculaRestController {
     }
 
     @DeleteMapping("/movies/{id}")
-    public void delete(@PathVariable Long id) {
+    public ResponseEntity<?> delete(@PathVariable Long id) {
         peliculaService.delete(id);
+        return new ResponseEntity<>("Pelicula eliminada", HttpStatus.NO_CONTENT);
     }
 
 }
