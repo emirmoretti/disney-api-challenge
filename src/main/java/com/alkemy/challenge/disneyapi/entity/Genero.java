@@ -1,5 +1,6 @@
 package com.alkemy.challenge.disneyapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,8 +19,8 @@ public class Genero implements Serializable {
     private Long id;
     private String nombre;
     private String image;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @OneToMany(mappedBy = "genero")
+    @JsonIgnore
     private List<Pelicula> peliculas;
 
     private static final long serialVersionUID = 1L;

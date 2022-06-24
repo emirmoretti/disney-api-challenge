@@ -31,6 +31,11 @@ public class Pelicula implements Serializable {
             , inverseJoinColumns = @JoinColumn(name = "personaje_id"))
     private Set<Personaje> personajes = new HashSet<>();
 
+    @ManyToOne
+    @JoinTable(name = "peliculas_genero", joinColumns = @JoinColumn(name="pelicula_id")
+            , inverseJoinColumns = @JoinColumn(name = "genero_id"))
+    private Genero genero;
+
     private static final long serialVersionUID = 1L;
 
 

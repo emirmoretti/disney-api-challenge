@@ -36,6 +36,20 @@ public class PeliculaRestController {
         return peliculaService.findById(id);
     }
 
+    /*Request params*/
+    @RequestMapping(value = "/movies", params = "nombre")
+    public List<Pelicula> findAllByName(@RequestParam String nombre){
+        return peliculaService.findAllByName(nombre);
+    }
+    @RequestMapping(value = "/movies", params = "idGenero")
+    public List<Pelicula> findAllByGen(@RequestParam Long idGenero){
+        return peliculaService.findAllByGen(idGenero);
+    }
+    @RequestMapping(value = "/movies", params = "orden")
+    public List<Pelicula> findAllByOrder(@RequestParam String orden) {
+        return peliculaService.findAllByOrder(orden);
+    }
+
     @PostMapping("/movies")
     public ResponseEntity<?> createMovie(@RequestBody Pelicula pelicula){
         peliculaService.save(pelicula);

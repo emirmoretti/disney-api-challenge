@@ -17,6 +17,27 @@ public class PeliculaServiceImpl implements IPeliculaService {
     private PeliculaRepo peliculaRepo;
 
 
+    /*request movies*/
+    @Transactional(readOnly = true)
+    public List<Pelicula> findAllByName(String nombre){
+       return peliculaRepo.findAllByTitulo(nombre);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Pelicula> findAllByGen(Long idGenero){
+        return peliculaRepo.findAllByGeneroId(idGenero);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Pelicula> findAllByOrder(String orden){
+        if(orden.equalsIgnoreCase("asc")) {
+            return peliculaRepo.findAllByOrderByCreateAtAsc();
+        } else if (orden.equalsIgnoreCase("desc")){
+            return peliculaRepo.findAllByOrderByCreateAtDesc();
+        }
+        return null;
+    }
+
     @Override
     @Transactional(readOnly = true)
     public Pelicula findById(Long id) {
