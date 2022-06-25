@@ -6,6 +6,8 @@ import com.alkemy.challenge.disneyapi.entity.Role;
 import com.alkemy.challenge.disneyapi.entity.Usuario;
 import com.alkemy.challenge.disneyapi.repo.RoleRepo;
 import com.alkemy.challenge.disneyapi.repo.UsuarioRepo;
+import com.alkemy.challenge.disneyapi.seguridad.JWTAuthResponseDTO;
+import com.alkemy.challenge.disneyapi.seguridad.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,12 +39,17 @@ public class AuthController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private JwtTokenProvider jwtTokenProvider;
+
     @PostMapping("/login")
-    public ResponseEntity<String> authenticateUser(@RequestBody LoginDTO loginDTO){
+    public ResponseEntity<JWTAuthResponseDTO> authenticateUser(@RequestBody LoginDTO loginDTO){
         Authentication authentication = authenticationManager
                 .authenticate(new UsernamePasswordAuthenticationToken(loginDTO.getUsernameOrEmail(), loginDTO.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        return new ResponseEntity<>("Ha iniciado sesion con exito !", HttpStatus.OK);
+        //obtenemos el token de jwttokenprovider
+        String token = jwtTokenProvider.generarToken(authentication);
+        return ResponseEntity.ok(new JWTAuthResponseDTO(token));
     }
 
     @PostMapping("/register")
