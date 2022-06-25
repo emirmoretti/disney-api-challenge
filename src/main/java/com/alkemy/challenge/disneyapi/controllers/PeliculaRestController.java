@@ -10,6 +10,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -78,7 +79,7 @@ public class PeliculaRestController {
         peliculaService.save(peliculaDb);
         return new ResponseEntity<>("pelicula editada", HttpStatus.OK);
     }
-
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/movies/{id}")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         Pelicula pelicula = peliculaService.findById(id);
@@ -88,6 +89,7 @@ public class PeliculaRestController {
         return new ResponseEntity<>("Pelicula eliminada", HttpStatus.NO_CONTENT);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/movies/upload")
     public ResponseEntity<?> subirImg(
             @RequestParam(name = "archivo") MultipartFile archivo,

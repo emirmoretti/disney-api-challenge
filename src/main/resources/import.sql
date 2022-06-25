@@ -27,3 +27,12 @@ INSERT INTO peliculas_genero(pelicula_id, genero_id) VALUES (2,1);
 INSERT INTO peliculas_genero(pelicula_id, genero_id) VALUES (3,2);
 INSERT INTO peliculas_genero(pelicula_id, genero_id) VALUES (4,2);
 INSERT INTO peliculas_genero(pelicula_id, genero_id) VALUES (5,3);
+
+INSERT INTO roles(id,nombre) VALUES (1, 'ROLE_USER');
+INSERT INTO roles(id,nombre) VALUES (2, 'ROLE_ADMIN');
+
+INSERT INTO usuarios(id, email, password, username) VALUES (1, 'c1@hotmail.com', '$2a$10$fBJ0gylXbSsPnsp2t3oCEuN31xS.gxCmmJrQTYCtTE30ff25HckNe', 'emir');
+INSERT INTO usuarios(id, email, password, username) VALUES (2, 'a1@hotmail.com', '$2a$10$fBJ0gylXbSsPnsp2t3oCEuN31xS.gxCmmJrQTYCtTE30ff25HckNe', 'admin');
+
+INSERT INTO usuarios_roles(usuario_id, role_id) VALUES (1, 2);
+INSERT INTO usuarios_roles(usuario_id, role_id) VALUES (2, 2);
