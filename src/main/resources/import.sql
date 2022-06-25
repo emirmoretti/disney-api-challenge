@@ -1,6 +1,6 @@
-INSERT INTO personaje (id, nombre, edad, peso, historia) VALUES (1, 'Iron Man', 15, 60.5, 'Corre rapido je');
+INSERT INTO personaje (id, nombre, edad, peso, historia) VALUES (1, 'Iron Man', 15, 60.5, 'Genio, millonario, playboy y filántropo.');
 INSERT INTO personaje (id, nombre, edad, peso, historia) VALUES (2, 'Son Goku', 48, 70.5, 'Gokū es hijo de Bardock y Gine, nace en el año 737 con el nombre de Kakarot / Kakarotto');
-INSERT INTO personaje (id, nombre, edad, peso, historia) VALUES (3, 'Superman', 15, 70.5, 'Sarasa');
+INSERT INTO personaje (id, nombre, edad, peso, historia) VALUES (3, 'Superman', 15, 70.5, 'Super heroe de DC');
 INSERT INTO personaje (id, nombre, edad, peso, historia) VALUES (4, 'Monkey D. Luffy', 19, 61, 'Es el capitán de la tripulación pirata conocida como los Piratas de Sombrero de Paja, fundada por él mismo para cumplir su sueño de encontrar el One Piece. Es originario del East Blue.');
 
 INSERT INTO pelicula (id, titulo, create_at, calificacion) VALUES (1, 'Dragon Ball Z', DATE '1989-04-26', 5);
@@ -31,8 +31,8 @@ INSERT INTO peliculas_genero(pelicula_id, genero_id) VALUES (5,3);
 INSERT INTO roles(id,nombre) VALUES (1, 'ROLE_USER');
 INSERT INTO roles(id,nombre) VALUES (2, 'ROLE_ADMIN');
 
-INSERT INTO usuarios(id, email, password, username) VALUES (1, 'c1@hotmail.com', '$2a$10$fBJ0gylXbSsPnsp2t3oCEuN31xS.gxCmmJrQTYCtTE30ff25HckNe', 'emir');
-INSERT INTO usuarios(id, email, password, username) VALUES (2, 'a1@hotmail.com', '$2a$10$fBJ0gylXbSsPnsp2t3oCEuN31xS.gxCmmJrQTYCtTE30ff25HckNe', 'admin');
+INSERT INTO usuarios(id, email, password, username) VALUES (1, 'c1@hotmail.com', '$2a$10$fBJ0gylXbSsPnsp2t3oCEuN31xS.gxCmmJrQTYCtTE30ff25HckNe', 'emir'); -- pw password
+INSERT INTO usuarios(id, email, password, username) VALUES (2, 'a1@hotmail.com', '$2a$10$fBJ0gylXbSsPnsp2t3oCEuN31xS.gxCmmJrQTYCtTE30ff25HckNe', 'admin'); -- pw password
 
 INSERT INTO usuarios_roles(usuario_id, role_id) VALUES (1, 2);
 INSERT INTO usuarios_roles(usuario_id, role_id) VALUES (2, 2);
