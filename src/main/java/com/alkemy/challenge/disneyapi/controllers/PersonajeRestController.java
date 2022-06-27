@@ -6,6 +6,7 @@ import com.alkemy.challenge.disneyapi.entity.Personaje;
 import com.alkemy.challenge.disneyapi.repo.PersonajeRepo;
 import com.alkemy.challenge.disneyapi.services.IPeliculaService;
 import com.alkemy.challenge.disneyapi.services.IUploadFileService;
+import com.alkemy.challenge.disneyapi.services.impl.PeliculaServiceImpl;
 import com.alkemy.challenge.disneyapi.services.impl.PersonajeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;

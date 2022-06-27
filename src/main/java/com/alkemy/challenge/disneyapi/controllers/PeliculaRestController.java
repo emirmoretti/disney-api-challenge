@@ -89,6 +89,12 @@ public class PeliculaRestController {
         return new ResponseEntity<>("Pelicula eliminada", HttpStatus.NO_CONTENT);
     }
 
+    @PostMapping("/movies/{peliculaId}/character")
+    public ResponseEntity<?> addCharacter(@PathVariable Long peliculaId, @RequestBody Personaje personajeRequest){
+        Pelicula pelicula = peliculaService.addPersonaje(peliculaId, personajeRequest);
+        return new ResponseEntity<>(pelicula, HttpStatus.OK);
+    }
+
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/movies/upload")
     public ResponseEntity<?> subirImg(
